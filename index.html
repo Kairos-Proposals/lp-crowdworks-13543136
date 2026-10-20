@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kairos ご提案 | 採用LP制作 ＆ LINE公式アカウント構築</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@500;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#121A33;
+    --navy-2:#1B2747;
+    --navy-3:#0B1022;
+    --paper:#EEF1F6;
+    --paper-2:#FFFFFF;
+    --gold:#C9A15B;
+    --gold-soft:#E4C98A;
+    --green:#3FA373;
+    --green-deep:#2D7E59;
+    --ink:#1C2230;
+    --ink-soft:#4C5468;
+    --line:#B8BFD1;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    font-family:'Noto Sans JP', sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.8;
+    font-weight:400;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  h1,h2,h3{
+    font-family:'Zen Old Mincho', serif;
+    font-weight:700;
+    letter-spacing:.03em;
+  }
+
+  .mono{
+    font-family:'Cormorant Garamond', serif;
+    letter-spacing:.12em;
+  }
+
+  a{ color:inherit; }
+
+  .wrap{
+    max-width:1120px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-family:'Cormorant Garamond', serif;
+    font-size:14px;
+    letter-spacing:.3em;
+    text-transform:uppercase;
+  }
+  .eyebrow::before{
+    content:'';
+    width:28px;
+    height:1px;
+    background:currentColor;
+    display:inline-block;
+  }
+
+  /* ========== HERO ========== */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:120px 24px 100px;
+    overflow:hidden;
+    background:
+      radial-gradient(ellipse 900px 500px at 85% -10%, rgba(201,161,91,.18), transparent 60%),
+      radial-gradient(ellipse 700px 500px at -10% 110%, rgba(63,163,115,.15), transparent 60%),
+      linear-gradient(160deg, var(--navy-3) 0%, var(--navy) 45%, var(--navy-2) 100%);
+    color:#fff;
+  }
+
+  .hero .cloud{
+    position:absolute;
+    border-radius:50%;
+    background:rgba(255,255,255,.05);
+    filter:blur(2px);
+  }
+  .hero .cloud.c1{ width:260px; height:260px; top:8%; left:6%; }
+  .hero .cloud.c2{ width:180px; height:180px; top:65%; left:12%; background:rgba(201,161,91,.08);}
+  .hero .cloud.c3{ width:340px; height:340px; top:-6%; right:-8%; background:rgba(63,163,115,.08);}
+
+  .flight-path{
+    position:absolute;
+    top:18%;
+    left:-5%;
+    width:70%;
+    border-top:2px dashed rgba(255,255,255,.18);
+    transform:rotate(8deg);
+  }
+  .flight-path::after{
+    content:'✈';
+    position:absolute;
+    right:-6px;
+    top:-14px;
+    font-size:18px;
+    color:var(--gold-soft);
+  }
+
+  .hero-inner{
+    position:relative;
+    z-index:2;
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:48px;
+  }
+
+  .hero-lead{
+    text-align:center;
+    max-width:720px;
+  }
+  .hero-lead .eyebrow{ color:var(--gold-soft); justify-content:center; }
+  .hero-lead .eyebrow::after{
+    content:'';
+    width:28px;
+    height:1px;
+    background:currentColor;
+    display:inline-block;
+  }
+  .hero-lead h1{
+    margin-top:22px;
+    font-size:clamp(28px, 5vw, 46px);
+    line-height:1.55;
+    color:#fff;
+  }
+  .hero-lead h1 span{
+    color:var(--gold-soft);
+  }
+  .hero-lead p{
+    margin-top:22px;
+    font-size:15px;
+    color:rgba(255,255,255,.72);
+    max-width:520px;
+    margin-left:auto;
+    margin-right:auto;
+  }
+
+  /* Boarding pass card */
+  .boarding-pass{
+    width:min(760px, 92vw);
+    background:var(--paper-2);
+    color:var(--ink);
+    border-radius:18px;
+    display:flex;
+    box-shadow:0 40px 80px rgba(0,0,0,.45);
+    transform:rotate(-1.4deg);
+    position:relative;
+  }
+  .boarding-pass:hover{ transform:rotate(0deg); transition:transform .4s ease; }
+
+  .bp-main{
+    flex:1;
+    padding:34px 36px;
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+  }
+  .bp-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:12px;
+  }
+  .bp-label{
+    font-size:11px;
+    letter-spacing:.2em;
+    color:var(--ink-soft);
+    text-transform:uppercase;
+    margin-bottom:4px;
+  }
+  .bp-value{
+    font-family:'Zen Old Mincho', serif;
+    font-size:18px;
+  }
+  .bp-value.big{
+    font-size:22px;
+  }
+  .bp-route{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    font-family:'Cormorant Garamond', serif;
+    font-size:26px;
+    letter-spacing:.08em;
+    color:var(--navy);
+  }
+  .bp-route .line{
+    flex:1;
+    height:1px;
+    background:repeating-linear-gradient(90deg, var(--line) 0 6px, transparent 6px 12px);
+    position:relative;
+  }
+  .bp-route .line::after{
+    content:'✈';
+    position:absolute;
+    right:0;
+    top:-10px;
+    font-size:14px;
+    color:var(--green-deep);
+  }
+
+  .bp-stub{
+    width:180px;
+    flex-shrink:0;
+    border-left:2px dashed var(--line);
+    padding:30px 20px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:14px;
+    text-align:center;
+  }
+  .bp-stub .seal{
+    width:62px;height:62px;
+    border-radius:50%;
+    border:2px solid var(--gold);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Cormorant Garamond', serif;
+    font-size:11px;
+    letter-spacing:.1em;
+    color:var(--gold);
+    text-align:center;
+    line-height:1.3;
+  }
+  .barcode{
+    width:100%;
+    height:34px;
+    background:repeating-linear-gradient(90deg, var(--ink) 0 2px, transparent 2px 5px, var(--ink) 5px 6px, transparent 6px 10px);
+    opacity:.75;
+  }
+  .bp-stub .code{
+    font-family:'Cormorant Garamond', serif;
+    font-size:13px;
+    letter-spacing:.15em;
+    color:var(--ink-soft);
+  }
+
+  /* ========== SECTION COMMON ========== */
+  section{
+    padding:110px 24px;
+    position:relative;
+  }
+  .section-head{
+    text-align:center;
+    max-width:680px;
+    margin:0 auto 64px;
+  }
+  .section-head .eyebrow{ justify-content:center; color:var(--green-deep); }
+  .section-head .eyebrow::after{
+    content:'';
+    width:28px;
+    height:1px;
+    background:currentColor;
+  }
+  .section-head h2{
+    margin-top:18px;
+    font-size:clamp(24px, 3.4vw, 34px);
+    line-height:1.5;
+  }
+  .section-head p{
+    margin-top:18px;
+    color:var(--ink-soft);
+    font-size:15px;
+  }
+
+  /* ========== UNDERSTANDING ========== */
+  .understand{
+    background:var(--paper);
+  }
+  .understand-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:48px;
+    align-items:center;
+    max-width:1020px;
+    margin:0 auto;
+  }
+  .understand-card{
+    background:var(--paper-2);
+    border:1px solid #DADFEA;
+    border-radius:16px;
+    padding:38px;
+    position:relative;
+  }
+  .understand-card::before{
+    content:'ご依頼内容の確認';
+    position:absolute;
+    top:-13px;
+    left:30px;
+    background:var(--gold);
+    color:#fff;
+    font-size:11px;
+    letter-spacing:.15em;
+    padding:4px 14px;
+    border-radius:20px;
+  }
+  .understand-list{
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    margin-top:10px;
+  }
+  .understand-list li{
+    display:flex;
+    gap:10px;
+    font-size:14.5px;
+    color:var(--ink);
+  }
+  .understand-list li::before{
+    content:'›';
+    color:var(--green-deep);
+    font-weight:700;
+  }
+  .understand-text h3{
+    font-size:21px;
+    line-height:1.7;
+    color:var(--navy);
+    margin-bottom:18px;
+  }
+  .understand-text p{
+    color:var(--ink-soft);
+    font-size:15px;
+  }
+  .understand-text p + p{ margin-top:14px; }
+
+  @media (max-width:860px){
+    .understand-grid{ grid-template-columns:1fr; }
+  }
+
+  /* ========== VALUES ========== */
+  .values{
+    background:
+      radial-gradient(ellipse 600px 400px at 100% 0%, rgba(201,161,91,.07), transparent 60%),
+      var(--paper);
+  }
+  .value-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:26px;
+  }
+  .value-card{
+    background:var(--paper-2);
+    border-radius:14px;
+    padding:30px 26px 28px;
+    border:1px solid #DADFEA;
+    border-left:4px solid var(--green-deep);
+    transition:transform .3s ease, box-shadow .3s ease;
+  }
+  .value-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 18px 32px rgba(18,26,51,.1);
+  }
+  .value-card .gate{
+    font-family:'Cormorant Garamond', serif;
+    font-size:13px;
+    letter-spacing:.25em;
+    color:var(--gold);
+  }
+  .value-card h3{
+    margin-top:12px;
+    font-size:17px;
+    color:var(--navy);
+    line-height:1.6;
+  }
+  .value-card p{
+    margin-top:12px;
+    font-size:13.5px;
+    color:var(--ink-soft);
+  }
+
+  @media (max-width:900px){
+    .value-grid{ grid-template-columns:repeat(2, 1fr); }
+  }
+  @media (max-width:600px){
+    .value-grid{ grid-template-columns:1fr; }
+  }
+
+  /* ========== PROCESS ========== */
+  .process{
+    background:linear-gradient(180deg, var(--navy-3), var(--navy) 60%, var(--navy-2));
+    color:#fff;
+  }
+  .process .section-head .eyebrow{ color:var(--gold-soft); }
+  .process .section-head p{ color:rgba(255,255,255,.65); }
+
+  .timeline{
+    max-width:760px;
+    margin:0 auto;
+    position:relative;
+    padding-left:36px;
+  }
+  .timeline::before{
+    content:'';
+    position:absolute;
+    left:9px;
+    top:6px;
+    bottom:6px;
+    width:1px;
+    background:repeating-linear-gradient(180deg, rgba(255,255,255,.35) 0 6px, transparent 6px 12px);
+  }
+  .t-item{
+    position:relative;
+    padding-bottom:44px;
+  }
+  .t-item:last-child{ padding-bottom:0; }
+  .t-item::before{
+    content:'';
+    position:absolute;
+    left:-36px;
+    top:4px;
+    width:18px;height:18px;
+    border-radius:50%;
+    background:var(--navy-2);
+    border:2px solid var(--gold-soft);
+  }
+  .t-head{
+    display:flex;
+    align-items:baseline;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+  .t-head .num{
+    font-family:'Cormorant Garamond', serif;
+    font-size:22px;
+    color:var(--gold-soft);
+  }
+  .t-head h3{
+    font-size:18px;
+    color:#fff;
+  }
+  .t-day{
+    font-family:'Cormorant Garamond', serif;
+    font-size:12px;
+    letter-spacing:.1em;
+    color:rgba(255,255,255,.5);
+    border:1px solid rgba(255,255,255,.3);
+    padding:2px 10px;
+    border-radius:20px;
+  }
+  .t-item p{
+    margin-top:10px;
+    font-size:14px;
+    color:rgba(255,255,255,.68);
+    max-width:560px;
+  }
+
+  /* ========== CLOSING ========== */
+  .closing{
+    background:var(--navy-3);
+    color:#fff;
+    text-align:center;
+  }
+  .closing .eyebrow{ justify-content:center; color:var(--gold-soft); }
+  .closing .eyebrow::after{ content:''; width:28px; height:1px; background:currentColor; }
+  .closing h2{
+    margin-top:18px;
+    font-size:clamp(26px,4vw,38px);
+    line-height:1.6;
+  }
+  .closing h2 span{ color:var(--gold-soft); }
+  .closing p{
+    margin-top:18px;
+    color:rgba(255,255,255,.65);
+    max-width:520px;
+    margin-left:auto;
+    margin-right:auto;
+    font-size:14.5px;
+  }
+
+  .final-pass{
+    margin:50px auto 0;
+    width:min(480px, 90vw);
+    background:var(--paper-2);
+    color:var(--ink);
+    border-radius:16px;
+    padding:30px 34px;
+    position:relative;
+    box-shadow:0 30px 60px rgba(0,0,0,.4);
+  }
+  .final-pass::before,
+  .final-pass::after{
+    content:'';
+    position:absolute;
+    width:28px;height:28px;
+    background:var(--navy-3);
+    border-radius:50%;
+    top:50%;
+    transform:translateY(-50%);
+  }
+  .final-pass::before{ left:-14px; }
+  .final-pass::after{ right:-14px; }
+  .final-pass .fp-top{
+    display:flex;
+    justify-content:space-between;
+    font-size:11px;
+    letter-spacing:.15em;
+    color:var(--ink-soft);
+    text-transform:uppercase;
+    border-bottom:1px dashed var(--line);
+    padding-bottom:16px;
+  }
+  .final-pass .fp-main{
+    padding-top:18px;
+    font-family:'Zen Old Mincho', serif;
+    font-size:19px;
+    color:var(--navy);
+  }
+  .cta-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    margin-top:22px;
+    background:linear-gradient(120deg, var(--green-deep), var(--green));
+    color:#fff;
+    text-decoration:none;
+    font-size:14.5px;
+    letter-spacing:.05em;
+    padding:14px 30px;
+    border-radius:30px;
+    font-weight:500;
+    box-shadow:0 14px 26px rgba(63,163,115,.35);
+    transition:transform .25s ease;
+  }
+  .cta-btn:hover{ transform:translateY(-3px); }
+
+  footer{
+    background:var(--navy-3);
+    color:rgba(255,255,255,.45);
+    text-align:center;
+    padding:34px 24px 44px;
+    font-size:12.5px;
+    letter-spacing:.05em;
+    border-top:1px solid rgba(255,255,255,.08);
+  }
+  footer .mono{ color:rgba(255,255,255,.7); font-size:14px; }
+
+  @media (max-width:640px){
+    .boarding-pass{ flex-direction:column; }
+    .bp-stub{
+      width:100%;
+      border-left:none;
+      border-top:2px dashed var(--line);
+      flex-direction:row;
+      justify-content:space-between;
+      padding:18px 24px;
+    }
+    .barcode{ display:none; }
+    section{ padding:80px 18px; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- ============ HERO ============ -->
+  <header class="hero">
+    <div class="cloud c1"></div>
+    <div class="cloud c2"></div>
+    <div class="cloud c3"></div>
+    <div class="flight-path"></div>
+
+    <div class="hero-inner">
+      <div class="hero-lead">
+        <span class="eyebrow">Kairos Proposal</span>
+        <h1>採用は、搭乗手続きに似ている。<br>候補者を迎える<span>1枚のLP</span>と、<br>離さないための<span>LINEゲート</span>を。</h1>
+        <p>採用LP制作／LINE公式アカウント構築のご依頼に対し、Web制作・システム開発チーム Kairos よりご提案させていただきます。</p>
+      </div>
+
+      <div class="boarding-pass">
+        <div class="bp-main">
+          <div class="bp-row">
+            <div>
+              <div class="bp-label">Passenger / Client</div>
+              <div class="bp-value big">tripclear_sns 様</div>
+            </div>
+            <div>
+              <div class="bp-label">Class</div>
+              <div class="bp-value">Recruitment</div>
+            </div>
+          </div>
+
+          <div class="bp-route">
+            <span>応募</span>
+            <span class="line"></span>
+            <span>入社</span>
+          </div>
+
+          <div class="bp-row">
+            <div>
+              <div class="bp-label">Scope</div>
+              <div class="bp-value">採用LP ＋ LINE公式</div>
+            </div>
+            <div>
+              <div class="bp-label">Gate</div>
+              <div class="bp-value">Kairos</div>
+            </div>
+          </div>
+        </div>
+        <div class="bp-stub">
+          <div class="seal">ISSUED<br>BY KAIROS</div>
+          <div class="barcode"></div>
+          <div class="code mono">NO. KRS-2024</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ UNDERSTANDING ============ -->
+  <section class="understand">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Our Understanding</span>
+        <h2>「公開可能な実績がある方のみ」。<br>そのご要望の裏にある気持ちを、汲み取っています。</h2>
+      </div>
+
+      <div class="understand-grid">
+        <div class="understand-card">
+          <ul class="understand-list">
+            <li>採用LP（1ページ・スマホ画面対応）の制作</li>
+            <li>採用用LINE公式アカウントの構築</li>
+            <li>それぞれ1〜10万円のご予算</li>
+            <li>公開可能な実績の提示が前提条件</li>
+          </ul>
+        </div>
+
+        <div class="understand-text">
+          <h3>実績を求めるのは、<br>「失敗したくない」からだと考えています。</h3>
+          <p>採用活動の入口となるLPと、応募後の関係を支えるLINE公式。どちらも一度作って終わりではなく、候補者が実際に目にし、行動する接点です。だからこそ「初めて任せる相手に、確かな実績を求める」というお気持ちは当然のことだと受け止めています。</p>
+          <p>Kairosでは、スマートフォン1画面で完結する採用LPの設計・制作、ならびにLINE公式アカウントの登録導線／自動応答シナリオの構築を、公開可能な制作実績としてお見せしながら進めることが可能です。ご予算・スケジュール感に合わせた、無理のないご提案をいたします。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ VALUES ============ -->
+  <section class="values">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">What We Provide</span>
+        <h2>ご依頼内容に合わせた、<br>5つの搭乗ゲート</h2>
+        <p>採用LPとLINE公式、それぞれ単体ではなく「1つの旅」として設計することで、応募から入社までの体験を途切れさせません。</p>
+      </div>
+
+      <div class="value-grid">
+        <div class="value-card">
+          <div class="gate mono">GATE 01</div>
+          <h3>スマホ特化・1ページ採用LP制作</h3>
+          <p>縦スクロール1画面で完結する設計。読了率・離脱率を意識したレイアウトで、公開実績に基づいた型をご提案します。</p>
+        </div>
+        <div class="value-card">
+          <div class="gate mono">GATE 02</div>
+          <h3>採用LINE公式アカウント構築</h3>
+          <p>友だち追加後の自動応答・質問フロー・エントリー導線までを設計し、応募のハードルを下げる接客チャネルを構築します。</p>
+        </div>
+        <div class="value-card">
+          <div class="gate mono">GATE 03</div>
+          <h3>LP → LINE登録の導線設計</h3>
+          <p>LPとLINEを切り離さず、「読む→友だち追加→応募」の動線を1本につなげることで、取りこぼしのない設計にします。</p>
+        </div>
+        <div class="value-card">
+          <div class="gate mono">GATE 04</div>
+          <h3>ご予算内でのスピード対応</h3>
+          <p>LP・LINEともに各1〜10万円のご予算に収まる制作範囲を事前にすり合わせ、追加費用の心配なく進行します。</p>
+        </div>
+        <div class="value-card">
+          <div class="gate mono">GATE 05</div>
+          <h3>公開実績ポートフォリオのご提示</h3>
+          <p>これまで手がけた採用LP・LINE公式アカウントの実物を、ご契約前にご確認いただけます。安心してお任せください。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROCESS ============ -->
+  <section class="process">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Flight Schedule</span>
+        <h2>ご出発までの<br>フライトスケジュール</h2>
+        <p>目安として、約2週間でのご提供が可能です。状況に応じて柔軟に調整いたします。</p>
+      </div>
+
+      <div class="timeline">
+        <div class="t-item">
+          <div class="t-head">
+            <span class="num mono">01</span>
+            <h3>ヒアリング・実績確認</h3>
+            <span class="t-day">Day 1-2</span>
+          </div>
+          <p>採用ターゲット、求める人物像、LINE運用の目的をヒアリング。あわせて公開実績をご提示し、方向性をすり合わせます。</p>
+        </div>
+        <div class="t-item">
+          <div class="t-head">
+            <span class="num mono">02</span>
+            <h3>構成・デザイン設計</h3>
+            <span class="t-day">Day 3-6</span>
+          </div>
+          <p>スマホ画面での見え方を最優先に、LPの構成案とLINE公式の会話フローを設計し、デザインイメージをご確認いただきます。</p>
+        </div>
+        <div class="t-item">
+          <div class="t-head">
+            <span class="num mono">03</span>
+            <h3>制作・実装</h3>
+            <span class="t-day">Day 7-11</span>
+          </div>
+          <p>採用LPのコーディングと、LINE公式アカウントの自動応答・登録導線を構築。あわせて相互の導線をつなぎます。</p>
+        </div>
+        <div class="t-item">
+          <div class="t-head">
+            <span class="num mono">04</span>
+            <h3>確認・公開</h3>
+            <span class="t-day">Day 12-14</span>
+          </div>
+          <p>表示確認・動作確認を経て公開。公開後の軽微な調整にも対応し、安心してご利用いただける状態でお渡しします。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CLOSING ============ -->
+  <section class="closing">
+    <div class="wrap">
+      <span class="eyebrow">Boarding Call</span>
+      <h2>次の採用フェーズへ、<br><span>ご搭乗のお時間</span>です。</h2>
+      <p>公開実績のご提示から承ります。まずは気軽にお問い合わせください。Kairosが、貴社の採用活動の入口を丁寧に設計いたします。</p>
+
+      <div class="final-pass">
+        <div class="fp-top">
+          <span>Boarding</span>
+          <span>Now Open</span>
+        </div>
+        <div class="fp-main">採用LP制作 ＋ LINE公式構築<br>ご相談受付中</div>
+        <a href="#" class="cta-btn">お問い合わせ・ご相談はこちら ✈</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="mono">KAIROS</div>
+    <div style="margin-top:6px;">Web制作・システム開発チーム ｜ 本ページはご提案用に作成したものです</div>
+  </footer>
+
+</body>
+</html>
